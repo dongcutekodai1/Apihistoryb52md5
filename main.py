@@ -104,12 +104,12 @@ def poll_api(gid, lock, result_store, history, is_md5):
 
 app = Flask(__name__)
 
-@app.route("/api/thuong", methods=["GET"])
+@app.route("/api/taixiu", methods=["GET"])
 def get_taixiu_100():
     with lock_100:
         return jsonify(latest_result_100)
 
-@app.route("/api/md5", methods=["GET"])
+@app.route("/api/taixiumd5", methods=["GET"])
 def get_taixiu_101():
     with lock_101:
         return jsonify(latest_result_101)
@@ -135,3 +135,4 @@ if __name__ == "__main__":
     logger.info("Đã bắt đầu polling dữ liệu.")
     port = int(os.environ.get("PORT", 8000))
     app.run(host=HOST, port=port)
+
